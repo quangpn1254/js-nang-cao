@@ -1,0 +1,104 @@
+
+//coding1
+// const car = function (make, speed) {
+//     this.make=make;
+//     this.speed=speed;
+// }
+
+// car.prototype.accelerate= function () {
+//     this.speed +=10;
+//     console.log (`${this.make} is going at ${this.speed} km/h` );
+
+// };
+
+// car.prototype.break= function () {
+//     this.speed -=10;
+//     console.log (`${this.make} is going at ${this.speed} km/h` );
+
+// };
+
+// const bmw =new car('BMW', 120);
+// const merceder= new car('Mercedes',95);
+
+// bmw.accelerate();
+
+// bmw.break();
+
+
+
+//coding2
+// class carcl{
+
+//   constructor(make, speed) {
+//         this.make=make;
+//         this.speed=speed;
+//     }
+    
+//     accelerate() {
+//         this.speed +=10;
+//         console.log (`${this.make} is going at ${this.speed} km/h` );
+    
+//     };
+    
+//     break(){
+//         this.speed -=10;
+//         console.log (`${this.make} is going at ${this.speed} km/h` );
+    
+//     };
+     
+//     get speedus(){
+//         return this.speed /1.6;
+//     }
+
+//     set speedus(speed){
+//         this.speed=speed*1.6;
+//     }
+
+// }
+//     const ford =new carcl('ford',120);
+//     console.log(ford.speed);
+//     ford.accelerate;
+//     ford.break;
+//     console.log(ford);
+
+
+
+//coding3
+
+const car = function (make, speed) {
+    this.make=make;
+    this.speed=speed;
+}
+
+car.prototype.accelerate= function () {
+    this.speed +=10;
+    console.log (`${this.make} is going at ${this.speed} km/h` );
+
+};
+
+car.prototype.break= function () {
+    this.speed -=10;
+    console.log (`${this.make} is going at ${this.speed} km/h` );
+
+};
+
+const ev =function(make,speed,charde){
+    car.call(this,make,charde);
+    this.charde=charde;
+}
+
+ev.prototype =Object.create(car.prototype);
+ ev.prototype.chardeBattery =function(chargeTo){
+    this.charde=chargeTo;
+ }
+ ev.prototype.accelerate =function () {
+    this.speed +=20;
+    this.charde--;
+    console.log (`${this.make} is going at ${this.speed} km/h, with a charge of ${this.charde}` );
+ }
+
+ const tesla =new ev('tesla',120,23);
+ tesla.chardeBattery(90);
+ console.log(tesla);
+ tesla.break();
+ tesla.accelerate();
